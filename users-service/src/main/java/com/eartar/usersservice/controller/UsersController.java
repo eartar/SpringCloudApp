@@ -23,7 +23,8 @@ public class UsersController {
     private Environment env;
     UserService userService;
 
-    public UsersController(UserService userService) {
+    public UsersController(Environment env, UserService userService) {
+        this.env = env;
         this.userService = userService;
     }
 
