@@ -1,6 +1,9 @@
 package com.eartar.usersservice.shared;
 
+import com.eartar.usersservice.model.AlbumResponseModel;
+
 import java.io.Serializable;
+import java.util.List;
 
 public class UserDto implements Serializable {
 
@@ -12,6 +15,7 @@ public class UserDto implements Serializable {
     private String email;
     private String userId;
     private String encryptedPassword;
+    private List<AlbumResponseModel> albums;
 
     public String getFirstName() {
         return firstName;
@@ -59,5 +63,13 @@ public class UserDto implements Serializable {
 
     public void setEncryptedPassword(String encryptedPassword) {
         this.encryptedPassword = encryptedPassword;
+    }
+
+    public List<AlbumResponseModel> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(List<AlbumResponseModel> albums) {
+        this.albums = albums;
     }
 }

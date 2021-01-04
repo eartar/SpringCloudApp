@@ -3,6 +3,7 @@ package com.eartar.usersservice.controller;
 
 import com.eartar.usersservice.model.CreateUserRequestModel;
 import com.eartar.usersservice.model.CreateUserResponseModel;
+import com.eartar.usersservice.model.UserResponseModel;
 import com.eartar.usersservice.service.UserService;
 import com.eartar.usersservice.shared.UserDto;
 import org.modelmapper.ModelMapper;
@@ -14,6 +15,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.net.ssl.HttpsURLConnection;
 import javax.validation.Valid;
 
 @RestController
@@ -45,6 +47,15 @@ public class UsersController {
 
         CreateUserResponseModel createUserResponseModel = modelMapper.map(createdUser, CreateUserResponseModel.class);
         return ResponseEntity.status(HttpStatus.CREATED).body(createUserResponseModel);
+    }
+
+    @GetMapping(value="/{userId}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<UserResponseModel> getUser(@PathVariable("userId") String userId){
+
+        UserDto userDto = userService.getUserDetailsByUserId(userId);
+        UserResponseModel retVal = new ModelMapper().map(userDto, UserResponseModel.class);
+
+        return ResponseEntity.status(HttpStatus.OK).body(retVal);
     }
 
 }
