@@ -1,0 +1,33 @@
+2021-01-05 14:55:17.198  INFO [users-ws,,,] 20812 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8012
+2021-01-05 14:55:19.252  INFO [users-ws,,,] 20812 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Connect Timeout Exception on Url - http://localhost:8012. Will be trying the next url if available
+2021-01-05 14:55:19.252  WARN [users-ws,,,] 20812 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8012/SCAConfigServer/default": Connection refused: no further information; nested exception is java.net.ConnectException: Connection refused: no further information
+2021-01-05 14:55:19.253  INFO [users-ws,,,] 20812 --- [restartedMain] c.e.u.UsersServiceApplication            : No active profile set, falling back to default profiles: default
+2021-01-05 14:55:19.739  INFO [users-ws,,,] 20812 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2021-01-05 14:55:19.774  INFO [users-ws,,,] 20812 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31ms. Found 1 JPA repository interfaces.
+2021-01-05 14:55:19.838  WARN [users-ws,,,] 20812 --- [restartedMain] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2021-01-05 14:55:19.899  WARN [users-ws,,,] 20812 --- [restartedMain] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+2021-01-05 14:55:19.989  INFO [users-ws,,,] 20812 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=5e65e5dc-254e-3a8a-bbd8-b65e0dc5e7ff
+2021-01-05 14:55:20.443  INFO [users-ws,,,] 20812 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2021-01-05 14:55:20.447  INFO [users-ws,,,] 20812 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-05 14:55:20.447  INFO [users-ws,,,] 20812 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-01-05 14:55:20.520  INFO [users-ws,,,] 20812 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-01-05 14:55:20.520  INFO [users-ws,,,] 20812 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1258 ms
+2021-01-05 14:55:20.596  WARN [users-ws,,,] 20812 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-05 14:55:20.596  INFO [users-ws,,,] 20812 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-05 14:55:20.600  INFO [users-ws,,,] 20812 --- [restartedMain] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@64bef305
+2021-01-05 14:55:20.652  INFO [users-ws,,,] 20812 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-01-05 14:55:20.689  INFO [users-ws,,,] 20812 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-01-05 14:55:20.692  INFO [users-ws,,,] 20812 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:089e0b98-2632-41bc-819e-65e52350ffa2'
+2021-01-05 14:55:21.431  WARN [users-ws,,,] 20812 --- [restartedMain] o.s.c.s.zipkin2.ZipkinAutoConfiguration  : Check result of the [RestTemplateSender{http://localhost:9411/api/v2/spans}] contains an error [CheckResult{ok=false, error=org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:9411/api/v2/spans": Connect timed out; nested exception is java.net.SocketTimeoutException: Connect timed out}]
+2021-01-05 14:55:21.783  INFO [users-ws,,,] 20812 --- [restartedMain] o.s.b.a.e.web.ServletEndpointRegistrar   : Registered '/actuator/hystrix.stream' to hystrix.stream-actuator-endpoint
+2021-01-05 14:55:21.837  INFO [users-ws,,,] 20812 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-05 14:55:21.875  INFO [users-ws,,,] 20812 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-05 14:55:21.899  INFO [users-ws,,,] 20812 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.23.Final
+2021-01-05 14:55:21.940  WARN [users-ws,,,] 20812 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-01-05 14:55:21.954  INFO [users-ws,,,] 20812 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-05 14:55:22.002  INFO [users-ws,,,] 20812 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-01-05 14:55:22.007  INFO [users-ws,,,] 20812 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-05 14:55:22.010  INFO [users-ws,,,] 20812 --- [restartedMain] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2021-01-05 14:55:22.274  INFO [users-ws,,,] 20812 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-05 14:55:22.278  INFO [users-ws,,,] 20812 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-01-05 14:55:22.397  INFO [users-ws,,,] 20812 --- [restartedMain] DeferredRepositoryInitializationListener : Spring Data repositories initialized!

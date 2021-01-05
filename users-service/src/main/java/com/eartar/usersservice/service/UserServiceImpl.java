@@ -6,8 +6,11 @@ import com.eartar.usersservice.data.UserEntity;
 import com.eartar.usersservice.data.UserRepository;
 import com.eartar.usersservice.model.AlbumResponseModel;
 import com.eartar.usersservice.shared.UserDto;
+import feign.FeignException;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpMethod;
@@ -31,6 +34,8 @@ public class UserServiceImpl implements UserService {
     //RestTemplate restTemplate;
     AlbumsServiceClient albumsServiceClient;
     Environment env;
+
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder, AlbumsServiceClient albumsServiceClient, Environment env) {
         this.userRepository = userRepository;
@@ -90,8 +95,13 @@ public class UserServiceImpl implements UserService {
         List<AlbumResponseModel> albumsList = albumsListResponse.getBody();
         */
 
+        logger.info("Before calling albums Microservice");
+
         ///Feign client version
         List<AlbumResponseModel> albumsList = albumsServiceClient.getAlbums(userId);
+
+        logger.info("After calling albums Microservice");
+
 
         UserDto userDto = new ModelMapper().map(userEntity, UserDto.class);
         userDto.setAlbums(albumsList);
