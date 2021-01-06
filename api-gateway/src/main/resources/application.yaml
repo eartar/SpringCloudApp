@@ -1,4 +1,31 @@
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8010/eureka
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: service_route
+          uri: lb://users-ws
+          predicates:
+            - Path=/users-ws/users/**
+            - Method=GET,PUT,DELETE
+            - Header=Authorization, Bearer (.*)
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/users-ws/(?<segment>.*), /$\{segment}
+            - name: Logging
+              args:
+                baseMessage: testttttt
+                preLogger: true
+                postLogger: true
+
+filters:
+  - RewritePath=/service(?<segment>/?.*), $\{segment}
+  - name: Logging
+    args:
+      baseMessage: My Custom Message
+      preLogger: true
+      postLogger: true

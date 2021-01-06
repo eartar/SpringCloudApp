@@ -12,11 +12,14 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
+
+
         // Disable default security.
         http.httpBasic().disable();
         http.formLogin().disable();
         http.csrf().disable();
         http.logout().disable();
+
 
 
         // Disable authentication for `/auth/**` routes.

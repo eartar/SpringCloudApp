@@ -2,8 +2,10 @@ package com.eartar.apigateway;
 
 import io.jsonwebtoken.Jwts;
 import org.apache.http.HttpHeaders;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -13,13 +15,13 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 @Component
-public class AuthHeaderFilter extends AbstractGatewayFilterFactory<AuthHeaderFilter.Config> {
+public class AuthGatewayFilterFactory extends AbstractGatewayFilterFactory<AuthGatewayFilterFactory.Config> {
 
-    final Environment env;
+    @Autowired
+    Environment env;
 
-    public AuthHeaderFilter(Environment env) {
+    public AuthGatewayFilterFactory() {
         super(Config.class);
-        this.env = env;
     }
 
     public static class Config {
@@ -43,7 +45,6 @@ public class AuthHeaderFilter extends AbstractGatewayFilterFactory<AuthHeaderFil
             if (!isJwtValid(jwt)){
                 return onError(exchange, "JWT token is invalid", HttpStatus.UNAUTHORIZED);
             }
-
             return chain.filter(exchange);
         };
     }
