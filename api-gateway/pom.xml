@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.eartar</groupId>
-    <artifactId>apigateway</artifactId>
+    <artifactId>api-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ApiGateway</name>
     <description>API Gateway for Cloud App</description>

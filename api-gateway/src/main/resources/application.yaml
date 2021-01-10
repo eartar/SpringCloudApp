@@ -16,16 +16,9 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/users-ws/(?<segment>.*), /$\{segment}
-            - name: Logging
+            - LoggingGatewayFilterFactory
+            - name: LoggingGatewayFilterFactory
               args:
                 baseMessage: testttttt
                 preLogger: true
                 postLogger: true
-
-filters:
-  - RewritePath=/service(?<segment>/?.*), $\{segment}
-  - name: Logging
-    args:
-      baseMessage: My Custom Message
-      preLogger: true
-      postLogger: true
