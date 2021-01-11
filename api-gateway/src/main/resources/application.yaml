@@ -3,10 +3,41 @@ logging:
     org.springframework.cloud.gateway: DEBUG
     reactor.netty.http.client: DEBUG
 
+
 spring:
   cloud:
     gateway:
       routes:
+
+        - id: users-status-check
+          uri: lb://users-ws
+          predicates:
+            - Path=/users-ws/users/status/check
+            - Method=GET
+            - Header=Authorization, Bearer (.*)
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/users-ws/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
+
+        - id: users-ws
+          uri: lb://users-ws
+          predicates:
+            - Path=/users-ws/users
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/users-ws/(?<segment>.*), /$\{segment}
+
+        - id: users-ws-login
+          uri: lb://users-ws
+          predicates:
+            - Path=/users-ws/users/login
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/users-ws/(?<segment>.*), /$\{segment}
+
         - id: service_route
           uri: lb://users-ws
           predicates:
@@ -16,9 +47,10 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/users-ws/(?<segment>.*), /$\{segment}
-            - LoggingGatewayFilterFactory
-            - name: LoggingGatewayFilterFactory
-              args:
-                baseMessage: testttttt
-                preLogger: true
-                postLogger: true
+            - AuthorizationHeaderFilter
+            #- LoggingGatewayFilterFactory
+            #- name: LoggingGatewayFilterFactory
+            #  args:
+            #    baseMessage: testttttt
+            #    preLogger: true
+            #    postLogger: true

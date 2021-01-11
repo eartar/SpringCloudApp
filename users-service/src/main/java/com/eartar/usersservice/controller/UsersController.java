@@ -13,6 +13,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -49,7 +51,10 @@ public class UsersController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createUserResponseModel);
     }
 
+
     @GetMapping(value="/{userId}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    @PreAuthorize("principal == #userId") //comes from UsernamePasswordAuthToken at AuthFilter.java
+    //@PostAuthorize("principal == returnObject.body.userId") //UserResponseModel has a field called userid
     public ResponseEntity<UserResponseModel> getUser(@PathVariable("userId") String userId){
 
         UserDto userDto = userService.getUserDetailsByUserId(userId);
