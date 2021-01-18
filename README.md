@@ -30,7 +30,7 @@ Albums
 Source code utilizes the following technologies;
 AWS S3 w/ Docker
 Spring MVC
-Spring Bootstrap 
+Spring Bootstrap
 Spring Cloud
 Spring Security
 Spring Data JPA
