@@ -1,6 +1,6 @@
 # SpringCloudApp
 
-Spring Study on Microservices.
+## Spring Study on Microservices.
 
 The aim of the project is to get a microservices project up in AWS EC2 ecosystem. The project is command line based and lacks UI. Implements Spring Security using JWT, and the ecosystem is only accessible through the API Gateway.
 
