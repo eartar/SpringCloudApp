@@ -1,13 +1,14 @@
 # SpringCloudApp
 
-Spring Study on Microservices, successor to the Spring Pet Clinic Study.
+Spring Study on Microservices, successor to the Spring Pet Clinic Study(https://github.com/eartar/spring-pet-clinic).
 
 The aim of the project is to get a microservices project up and running in the AWS EC2. The project is command line based and lacks UI. 
 
 The developed microservices;
 
-Config Server
+Config
 - For other microservices to get config files from github(public for portfolio).
+   - Config properties can be found at: https://github.com/eartar/SCAConfig
 - Deployment(EC2) configs are targeted for AWS deployments while the default packages are for local testing using cubectl.
 - Some config variables are encrypted using Spring Security to test out the system.
 
