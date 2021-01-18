@@ -4,7 +4,7 @@
 
 The aim of the project is to get a microservices project up in AWS EC2 ecosystem. The project is command line based and lacks UI. Implements Spring Security using JWT, and the ecosystem is only accessible through the API Gateway.
 
-The developed microservices;
+## Developed Microservices
 
 Config
 - For other microservices to get config files from github(public for portfolio).
@@ -39,7 +39,7 @@ Also;
 - All the microservices are put into EC2 after being dockerized. The docker images can be found at dockerhub(https://hub.docker.com/u/eartar).
 - In EC2, Elastic Search & Kibana service and MySQL service are deployed from their respective public dockerhub images and configured.
 
-Source code utilizes the following technologies;
+## Utilized Technologies
  - AWS EC2 w/ Docker
  - Spring MVC
  - Spring Bootstrap
