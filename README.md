@@ -52,4 +52,3 @@ Source code utilizes the following technologies;
  - Sleuth & Zipkin
  - Feign & Netflix OSS Hystrix
  - ELK Stack's Kibana, ElasticSearch and Logstash
- - 
