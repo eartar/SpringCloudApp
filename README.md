@@ -28,12 +28,12 @@ Albums
  - A microservice for handling album entity related information. 
 
 Source code utilizes the following technologies;
-AWS S3 w/ Docker
-Spring MVC
-Spring Bootstrap
-Spring Cloud
-Spring Security
-Spring Data JPA
-Kubernetes(Cubectl) w/ Docker for local testing
-Maven
-h2 database w/ MySQL
+ - AWS S3 w/ Docker
+ - Spring MVC
+ - Spring Bootstrap
+ - Spring Cloud
+ - Spring Security
+ - Spring Data JPA
+ - Kubernetes(Cubectl) w/ Docker for local testing
+ - Maven
+ - h2 database w/ MySQL
