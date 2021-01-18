@@ -1,0 +1,89 @@
+# Source: https://stackoverflow.com/a/43317244
+$path = ".\aws-ec2-key.pem"
+# Reset to remove explict permissions
+icacls.exe $path /reset
+# Give current user explicit read-permission
+icacls.exe $path /GRANT:R "$($env:USERNAME):(R)"
+# Disable inheritance and remove inherited permissions
+icacls.exe $path /inheritance:r
+ 
+ cd 'X:\Spring Projects\SCAConfigNative\'
+ ssh -i "SCA-app-keypair.pem" ec2-user@ec2-3-121-87-253.eu-central-1.compute.amazonaws.com
+
+
+sudo yum update
+sudo yum install docker
+sudo service docker start
+
+sudo docker run -d --name rabbit-mgmt -p 15672:15672 -p 5672:5672 -p 4369:4369 rabbitmq:3-management
+
+docker start $id
+docker stop $id
+
+
+web
+http://ec2-3-121-87-253.eu-central-1.compute.amazonaws.com:15672/
+for rabbitmq mgmt panel
+
+ssh -i "SCA-app-keypair.pem" ec2-user@ec2-3-121-74-3.eu-central-1.compute.amazonaws.com
+
+
+
+
+Commit the stopped container to a new image: test_image.
+Run the new image in a new container with a shell.
+docker commit $CONTAINER_ID test_image
+docker run -ti --entrypoint=sh test_image
+Run the list file command in the new container.
+docker exec --privileged $NEW_CONTAINER_ID ls -1 /var/log
+
+mvn clean build
+docker build --tag=config-server .
+docker tag config-server eartar/config-server
+docker push eartar/config-server
+
+
+sudo yum update
+sudo yum install docker 
+sudo service docker start
+sudo usermod -a -G docker ec2-user
+
+docker run -d -p 8012:8012 eartar/config-server
+
+docker run -d -p 8010:8010 eartar/discovery-server
+
+docker run -d -p 8082:8082 eartar/api-gateway
+
+docker run -d -v esdata1:/usr/share/elasticsearch/data --name elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:7.10.1
+
+docker run -d --link elasticsearch:elasticsearch -p 5601:5601 kibana:7.10.1
+
+docker run -d -p 8989:8989 -e "logging.file=/api-logs/albums-ws.log" -e "server.port=8989" -v /home/ec2-user/api-logs:/api-logs eartar/albums-service
+
+
+create logstash stuff in elk
+docker run -d --name albums-ws-logstash -v /home/ec2-user/api-logs:/api-logs eartar/logstash
+docker run -d --name users-ws-logstash -v /home/ec2-user/api-logs:/api-logs eartar/users-ws-logstash
+
+docker run -d -p 3306:3306 --name mysql-docker-container -e MYSQL_ROOT_PASSWORD=eartar -e MYSQL_DATABASE=photos -e MYSQL_USER=eartar -e MYSQL_PASSWORD=eartar mysql:latest
+
+make a container persist:
+docker run -d -v /var/lib/mysql:/var/lib/mysql -p 3306:3306 --name mysql-docker-container -e MYSQL_ROOT_PASSWORD=eartar -e MYSQL_DATABASE=photos -e MYSQL_USER=eartar -e MYSQL_ROOT_PASSWORD=eartar mysql:latest
+
+
+docker run -d -e "spring.datasource.url=jdbc:mysql://172.31.44.110:3306/photos?serverTimezone=UTC" -e "server.port=8181" -p 8181:8181 -e "logging.file=/api-logs/users-ws.log" -v/home/ec2-user/api-logs:/api-logs eartar/users-service
+
+
+sudo systemctl enable docker
+sudo service docker start
+docker ps -a
+docker restart
+
+
+
+
+
+rm from users app.prop
+#spring.zipkin.base-url=http://localhost:9411
+#spring.zipkin.sender.type=web
+#spring.sleuth.sampler.probability=1
